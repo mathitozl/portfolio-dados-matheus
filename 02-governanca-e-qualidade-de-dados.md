@@ -1,28 +1,30 @@
-# 🛡️ Guia Prático: Governança, Ética e Qualidade de Dados
+# Anotações do Curso 2: Fazer perguntas para tomar decisões com base em dados
 
-Resumo estruturado dos conceitos aplicados nos **Cursos 1 a 4** da certificação **Google Data Analytics**, com foco em confiabilidade de dados para tomada de decisão corporativa e financeira.
+Resumo do que aprendi no segundo curso da certificação do Google no Coursera. O foco principal desse módulo foi entender o problema do negócio antes de sair mexendo em planilhas ou números, além de praticar as primeiras fórmulas no Excel e Google Sheets.
 
-## 1. Critério ROCCC para Avaliação de Fontes de Dados (Curso 3)
-Antes de iniciar qualquer análise de risco, crédito ou comportamento de clientes, a integridade da fonte é validada através do framework **ROCCC**:
+## 1. Como fazer boas perguntas (Método SMART)
+Antes de analisar qualquer base de dados, aprendi que precisamos fazer perguntas claras para a equipe. No curso, usamos o modelo **SMART**:
 
-* **R — Reliable (Confiável):** A amostra representa a população real sem viés de seleção (*Selection Bias*) ou confirmação.
-* **O — Original (Original):** Priorização de dados primários validados internamente em vez de fontes secundárias sem rastreabilidade.
-* **C — Comprehensive (Abrangente):** A base contém todas as variáveis críticas necessárias para responder ao problema de negócio.
-* **C — Current (Atual):** Os dados refletem o cenário presente; bases defasadas geram distorções em modelos analíticos.
-* **C — Cited (Citado/Auditável):** Origem documentada, garantindo conformidade com políticas de Governança e LGPD.
+* **S (Específica):** A pergunta foca em um ponto claro? (Ex.: em vez de *"Como melhorar as vendas?"*, perguntar *"Qual produto teve mais cancelamentos no último mês?"*).
+* **M (Mensurável):** Dá para medir isso com números?
+* **A (Orientada para a ação):** A resposta vai ajudar a tomar alguma decisão prática?
+* **R (Relevante):** Esse assunto realmente importa para o problema que estamos tentando resolver?
+* **T (Temporal):** Tem um período definido? (Ex.: último trimestre, últimos 30 dias).
 
-## 2. Checklist de Higienização de Dados (Curso 4)
-Principais categorias de "dados sujos" (*dirty data*) tratadas antes da etapa de análise exploratória:
+## 2. Erros comuns ao fazer perguntas
+* **Perguntas tendenciosas:** Quando a pergunta já induz a resposta (ex.: *"Você concorda que o novo aplicativo ficou ótimo?"*).
+* **Perguntas fechadas demais:** Quando só respondem "sim" ou "não" e não explicam o motivo.
+* **Perguntas vagas:** Sem contexto ou sem período de tempo definido.
 
-| Tipo de Problema | Impacto no Negócio | Solução Técnica (SQL / Planilhas) |
-| :--- | :--- | :--- |
-| **Dados Duplicados** | Contagem inflada de clientes ou transações em duplicidade | Uso de `DISTINCT` no SQL ou ferramenta *Remover Duplicatas* |
-| **Dados Desatualizados** | Decisões baseadas em perfis de crédito antigos | Filtro temporal (`WHERE`) e atualização cadastral contínua |
-| **Dados Incompletos (Nulos)** | Erros matemáticos em médias e indicadores financeiros | Tratamento com `COALESCE()`, `IFNULL()` ou exclusão justificada |
-| **Dados Inconsistentes / Tipagem** | Falha em cruzamentos (`JOIN`) e cálculos numéricos | Padronização com `TRIM()`, `UPPER()`, `SUBSTR()` e conversão com `CAST()` |
+## 3. Prática em Planilhas (Excel / Google Sheets)
+Neste curso comecei a praticar o uso de fórmulas básicas e organização de tabelas para resolver problemas simples:
 
-## 3. Boas Práticas de Documentação (Changelog)
-Toda alteração estrutural na base bruta é registrada em um **Changelog** contendo:
-1. **Data e responsável** pela higienização;
-2. **Anomalia identificada** (ex.: 42 registros com UF contendo espaços em branco);
-3. **Regra de negócio aplicada** (ex.: remoção de espaços com `TRIM` e conversão de nulos para zero).
+* **Operadores básicos:** Soma (`+`), subtração (`-`), multiplicação (`*`) e divisão (`/`).
+* **`SOMA()` / `SUM()`:** Para somar colunas de valores (ex.: total de vendas do mês).
+* **`MÉDIA()` / `AVERAGE()`:** Para descobrir o valor médio de um período.
+* **`MÍN()` e `MÁX()` (`MIN` / `MAX`):** Para achar rapidamente o menor e o maior valor de uma lista sem precisar procurar linha por linha.
+* **`CONT.NÚM()` e `CONT.SE()` (`COUNT` / `COUNTIF`):** Para contar quantas linhas atendem a uma condição específica (ex.: quantos clientes são do estado de SP).
+
+## 4. Comunicação com a equipe (Stakeholders)
+* Antes de começar uma tarefa, sempre alinhar **quem** vai usar os dados, **qual** decisão precisa ser tomada e **qual é o prazo**.
+* Gráficos e tabelas precisam ser simples: quem bate o olho precisa entender o resultado em poucos segundos.
