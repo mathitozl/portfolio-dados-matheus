@@ -1,24 +1,22 @@
-# 📊 Portfólio de Análise de Dados — Google Data Analytics
+# Estudos de Análise de Dados — Google Data Analytics (Coursera)
 
-Olá! Sou Matheus, estudante de Análise de Dados em formação pela certificação profissional **Google Data Analytics (Coursera)**. Este repositório reúne meus estudos práticos, scripts de tratamento de dados em SQL e frameworks analíticos voltados para a tomada de decisão orientada a dados (*Data-Driven Decision Making*).
+Olá! Meu nome é **Matheus**. Criei este repositório para organizar minhas anotações e os exercícios práticos que estou fazendo na certificação de Análise de Dados do Google pelo Coursera.
 
----
+Meu objetivo aqui é ir registrando minha evolução conforme avanço nas aulas de Planilhas, SQL e análise de dados.
 
-## 🛠️ Competências e Ferramentas em Desenvolvimento
+## Onde estou agora
 
-* **Limpeza e Qualidade de Dados (Data Cleaning):** Identificação de inconsistências, remoção de duplicatas, tratamento de valores nulos e padronização de bases em Planilhas e SQL.
-* **Banco de Dados e SQL (BigQuery):** Consultas estruturadas utilizando `SELECT`, `WHERE`, `DISTINCT`, `TRIM`, `SUBSTR`, `LENGTH`, `CAST`, `COALESCE` e `CASE WHEN`.
-* **Governança e Integridade:** Avaliação de viés amostral, confiabilidade de fontes (critério ROCCC), ética de dados e documentação de *changelogs*.
-* **Metodologia Analítica do Google:** Aplicação das 6 fases do ciclo de dados (*Ask, Prepare, Process, Analyze, Share, Act*).
+* [x] **Curso 1 — Fundamentos:** O que faz um analista de dados e as 6 etapas da análise (Perguntar, Preparar, Processar, Analisar, Compartilhar e Agir).
+* [x] **Curso 2 — Fazer perguntas para tomar decisões:** Como entender o problema antes de olhar para os números e básico de planilhas.
+* [x] **Curso 3 — Preparar os dados para exploração:** Como os dados são coletados, organização de tabelas, ética de dados e introdução ao SQL e BigQuery.
+* [x] **Curso 4 — Processar os dados para limpá-los (Cursando - Módulo 3):** Estou aprendendo na prática como limpar bases "sujas" (dados duplicados, espaços em branco, erros de digitação e valores vazios) usando Excel/Google Sheets e agora **SQL**.
+* [ ] **Cursos 5 a 8:** Ainda vou iniciar (Análise, Visualização com Tableau, R e Projeto Final).
 
-## 📚 Progresso na Certificação (Coursera)
+## O que já pratiquei até aqui
 
-- [x] **Curso 1 — Fundamentos: Dados, Dados, em Todos os Lugares:** Ciclo de vida dos dados, pensamento analítico e ecossistema de dados.
-- [x] **Curso 2 — Fazer Perguntas para Tomar Decisões Baseadas em Dados:** Definição de KPIs, perguntas SMART e comunicação com *stakeholders*.
-- [x] **Curso 3 — Preparar os Dados para Exploração:** Governança, estrutura de bancos relacionais, metadados e coleta ética.
-- [ ] **Curso 4 — Processar os Dados para Limpá-los (Em andamento - Módulo 3):** Integridade estatística, limpeza avançada em planilhas e higienização de bancos com SQL.
-- [ ] **Curso 5 a 8 (Próximas etapas):** Análise Exploratória, Visualização em Tableau, Programação em R e Estudo de Caso Final.
+* **Excel / Google Sheets:** Uso de `PROCV`, `CONT.SE`, `SOMASES`, `ARRUMAR` (para tirar espaços extras), remoção de duplicatas e Tabelas Dinâmicas básicas.
+* **SQL (no BigQuery):** Consultas com `SELECT`, `FROM`, `WHERE`, além de funções de limpeza de texto e números que vi no Módulo 3 (`DISTINCT`, `TRIM`, `SUBSTR`, `LENGTH` e `CAST`).
 
-## 📂 Projetos Práticos neste Repositório
+## Arquivos de estudo
 
-1. **[`01-sql-limpeza-dados-financeiros.sql`](./01-sql-limpeza-dados-financeiros.sql):** Script prático simulando a higienização e padronização de uma base cadastral e transacional de clientes bancários utilizando SQL no Google BigQuery.
+* [`01-sql-limpeza-dados-financeiros.sql`](./01-sql-limpeza-dados-financeiros.sql): Anotações e exemplos das funções de SQL que estou praticando agora no Curso 4.
