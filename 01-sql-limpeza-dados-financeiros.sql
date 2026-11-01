@@ -1,69 +1,48 @@
-/*
-===============================================================================
-PROJETO PRÁTICO: Higienização de Base de Clientes e Transações Bancárias
-AUTOR: Matheus
-CONTEXTO: Curso 4 (Módulo 3) - Processar os Dados para Limpá-los (Google / Coursera)
-OBJETIVO: Garantir a qualidade e integridade dos dados antes da análise de crédito,
-          corrigindo espaços extras, padronizando códigos de agência/UF, tratando
-          valores nulos e convertendo tipos de dados (strings para numérico/data).
-===============================================================================
-*/
+-- Anotações práticas do Curso 4 (Módulo 3): Limpeza de dados com SQL
+-- Praticando os comandos vistos nas aulas do Coursera
 
--- 1. AUDITORIA INICIAL: Identificar registros únicos de clientes (remoção de duplicatas)
-SELECT 
-    DISTINCT id_cliente,
-    nome_cliente,
-    cpf
-FROM 
-    `projeto_banco.bruto.cadastro_clientes`;
-
-
--- 2. VALIDAÇÃO DE COMPRIMENTO: Identificar CPFs e siglas de Estado (UF) fora do padrão
--- O CPF limpo deve conter exatamente 11 dígitos e a UF exatamente 2 caracteres
-SELECT 
+-- 1. DISTINCT: Usado para não trazer linhas repetidas na consulta
+SELECT DISTINCT
     id_cliente,
-    cpf,
-    LENGTH(TRIM(cpf)) AS tamanho_cpf,
-    estado_uf,
-    LENGTH(TRIM(estado_uf)) AS tamanho_uf
-FROM 
-    `projeto_banco.bruto.cadastro_clientes`
-WHERE 
-    LENGTH(TRIM(cpf)) <> 11 
-    OR LENGTH(TRIM(estado_uf)) <> 2;
+    nome_cliente
+FROM
+    tabela_clientes;
 
 
--- 3. QUERY DE LIMPEZA E PADRONIZAÇÃO (Tabela Limpa para Análise)
--- Aplicação de TRIM, UPPER, SUBSTR, CAST, COALESCE e CASE WHEN
+-- 2. LENGTH e TRIM:
+-- TRIM tira espaços em branco digitados sem querer antes ou depois do texto
+-- LENGTH conta quantos caracteres tem (bom para checar se o estado tem só 2 letras ou se o CPF tem 11 números)
 SELECT
-    -- Remove espaços em branco acidentais no ID
-    TRIM(id_cliente) AS id_cliente_limpo,
-    
-    -- Padroniza o nome do cliente em letras maiúsculas e sem espaços extras
-    UPPER(TRIM(nome_cliente)) AS nome_cliente_padronizado,
-    
-    -- Extrai apenas os 2 primeiros caracteres da UF e padroniza em maiúsculas
-    UPPER(SUBSTR(TRIM(estado_uf), 1, 2)) AS uf_padronizada,
-    
-    -- Extrai os 4 primeiros dígitos do código da agência
-    SUBSTR(TRIM(codigo_agencia), 1, 4) AS agencia_padronizada,
-    
-    -- Converte o valor de renda mensal de texto (STRING) para decimal (FLOAT64)
-    CAST(renda_mensal_texto AS FLOAT64) AS renda_mensal,
-    
-    -- Converte a data de abertura da conta de texto para formato DATE
-    CAST(data_abertura_texto AS DATE) AS data_abertura_conta,
-    
-    -- Substitui saldo nulo por 0.00 para evitar erros em cálculos de média
-    COALESCE(saldo_conta_corrente, 0.00) AS saldo_atual,
-    
-    -- Classifica o perfil de atendimento com base na consistência cadastral
-    CASE 
-        WHEN renda_mensal_texto IS NULL THEN 'Cadastro Pendente de Atualização'
-        ELSE 'Cadastro Validado'
-    END AS status_qualidade_cadastro
+    nome_cliente,
+    estado,
+    LENGTH(TRIM(estado)) AS quantidade_letras
+FROM
+    tabela_clientes
+WHERE
+    LENGTH(TRIM(estado)) > 2;
 
-FROM 
-    `projeto_banco.bruto.cadastro_clientes`
-WHERE 
-    id_cliente IS NOT NULL;
+
+-- 3. SUBSTR (ou SUBSTRING): Pega só uma parte do texto
+-- Exemplo: pegar só as 2 primeiras letras da coluna estado (começando na posição 1, pegando 2 letras)
+SELECT
+    id_cliente,
+    SUBSTR(estado, 1, 2) AS uf_corrigida
+FROM
+    tabela_clientes;
+
+
+-- 4. CAST: Converte um tipo de dado em outro
+-- Exemplo da aula: quando um valor numérico ou data vem salvo como texto (STRING) e precisamos transformar em número (FLOAT64)
+SELECT
+    id_cliente,
+    CAST(valor_compra AS FLOAT64) AS valor_convertido
+FROM
+    tabela_vendas;
+
+
+-- 5. COALESCE: Substitui valores vazios (NULL) por um valor padrão para não dar erro na conta
+SELECT
+    id_cliente,
+    COALESCE(saldo, 0) AS saldo_sem_nulos
+FROM
+    tabela_clientes;
