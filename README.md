@@ -17,6 +17,3 @@ Meu objetivo aqui é ir registrando minha evolução conforme avanço nas aulas 
 * **Excel / Google Sheets:** Uso de `PROCV`, `CONT.SE`, `SOMASES`, `ARRUMAR` (para tirar espaços extras), remoção de duplicatas e Tabelas Dinâmicas básicas.
 * **SQL (no BigQuery):** Consultas com `SELECT`, `FROM`, `WHERE`, além de funções de limpeza de texto e números que vi no Módulo 3 (`DISTINCT`, `TRIM`, `SUBSTR`, `LENGTH` e `CAST`).
 
-## Arquivos de estudo
-
-* [`01-sql-limpeza-dados-financeiros.sql`](./01-sql-limpeza-dados-financeiros.sql): Anotações e exemplos das funções de SQL que estou praticando agora no Curso 4.
